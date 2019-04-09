@@ -10,7 +10,7 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: 'app/auth/auth.module#AuthModule',
-  },
+  }
 ];
 
 @NgModule({

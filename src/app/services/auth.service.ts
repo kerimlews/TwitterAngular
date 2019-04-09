@@ -1,12 +1,20 @@
 import {Injectable} from '@angular/core';
+import { Subject, BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class AuthService {
+
+  isAuth = new Subject<boolean>();
+
+  setAuth(value: boolean): void {
+    this.isAuth.next(value);
+  }
 
   login(username: string, password: string) {
     const authToken = this.generateAuthToken(username, password);
     this.setAuthToken(authToken);
     this.storeUsername(username);
+    this.isAuth.next(true);
   }
 
   getAuthToken(): string {
@@ -42,5 +50,6 @@ export class AuthService {
   logout() {
     this.clearAuthToken();
     this.clearCredentials();
+    this.isAuth.next(false);
   }
 }

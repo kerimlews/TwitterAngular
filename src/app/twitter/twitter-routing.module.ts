@@ -9,6 +9,7 @@ const routes: Routes = [
     children: [
       {path: '', redirectTo: 'tweets', pathMatch: 'full'},
       {path: 'tweets', loadChildren: 'app/twitter/tweets/tweets.module#TweetsModule'},
+      {path: 'user-overview', loadChildren: 'app/twitter/user-overview/user-overview.module#UserOverviewModule'},
       {path: 'tweets/:username', loadChildren: 'app/twitter/user-tweets/user-tweets.module#UserTweetsModule'},
     ],
   },

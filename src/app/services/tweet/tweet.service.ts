@@ -19,7 +19,12 @@ export class TweetService {
     return this.http.get<TweetModel[]>(ENDPOINT_BASE + '/' + username);
   }
 
+  fetchNumberOfTweets(): Observable<number> {
+    return this.http.get<number>(ENDPOINT_BASE + '/count-tweets');
+  }
+
   create(tweetContent: string) {
     return this.http.post<TweetModel>(ENDPOINT_BASE, tweetContent);
   }
+
 }

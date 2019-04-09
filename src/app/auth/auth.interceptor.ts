@@ -18,10 +18,16 @@ export class AuthInterceptor implements HttpInterceptor {
       }
     });
     return next.handle(req).do((event: HttpEvent<any>) => {
-    }, (err: any) => {
+      if(event.type !== 0) {
+        this.authService.setAuth(true);
+      }
+    },
+    (err: any) => {
       if (err instanceof HttpErrorResponse && err.status === 401) {
         this.authService.logout();
-        this.router.navigate(['/login']);
+        this.authService.setAuth(false);
+        console.log(this.router.url)
+        this.router.navigate([this.router.url === '/registration' ? '/registration' : '/login']);
       }
     });
   }

@@ -9,6 +9,11 @@
         </li>
         <li routerLinkActive="active"><a routerLink="tweets">Tweets</a>
         </li>
+        <li routerLinkActive="active"><a routerLink="user-overview">Profile</a>
+        </li>
+        <li>
+          <button class="btn btn-primary" *ngIf="$isAuth | async" (click)="logout()">Logout </button>
+        </li>
       </ul>
     </div>
   </div>

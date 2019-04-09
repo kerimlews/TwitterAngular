@@ -12,7 +12,7 @@ import {TweetService} from "../services/tweet/tweet.service";
     TwitterRoutingModule,
   ],
   declarations: [
-    MainComponent,
+    MainComponent
   ],
   providers: [TweetService]
 })
